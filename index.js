@@ -5,7 +5,7 @@ const generateMarkdown = require("./utils/generateMarkdown");
 
 // array of questions for user
 const questions = () => {
-  return inquirer.createPromptModule([
+  return inquirer.prompt([
     {
       type: "input",
       name: "title",
@@ -135,7 +135,19 @@ const questions = () => {
 function writeToFile(fileName, data) {}
 
 // function to initialize program
-function init() {}
+const init = async () => {
+  try {
+    const answers = await questions();
+    console.log(answers);
+    // const html = generateHTML(answers);
+
+    // await writeFileAsync("index.html", html);
+
+    console.log("Successfully wrote to index.html");
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // function call to initialize program
 init();
