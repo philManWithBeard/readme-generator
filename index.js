@@ -1,7 +1,9 @@
 const fs = require("fs");
+const util = require("util");
 const path = require("path");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
+const writeFileAsync = util.promisify(fs.writeFile);
 
 // array of questions for user
 const questions = () => {
@@ -139,9 +141,10 @@ const init = async () => {
   try {
     const answers = await questions();
     console.log(answers);
-    // const html = generateHTML(answers);
 
-    // await writeFileAsync("index.html", html);
+    const markdown = generateMarkdown(answers);
+
+    await writeFileAsync("README.md", markdown);
 
     console.log("Successfully wrote to index.html");
   } catch (err) {
