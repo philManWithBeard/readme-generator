@@ -1,9 +1,13 @@
-# safdas
+# Readme Generator
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Description
-dsafadsf
+
+Asks questions in the command line then generates a readme.md file
 
 ### Table of Contents
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
@@ -12,20 +16,26 @@ dsafadsf
 - [Questions](#questions)
 
 ### Installation
-asdfdasf
+
+node init & node install
 
 ### Usage
-sdafadsf
+
+node index.js
 
 ### License
-asddfads
+
+MIT
 
 ### Contributing
-sadfadsf
+
+Reach out using the contact details below or create an issue
 
 ### Tests
-adsfdsaf
+
+N/A
 
 ### Questions
-asdf
-asf
+
+- [See my Github](https://www.github.com/philmanwithbeard)
+- Email: philburrowsfm@gmail.com
