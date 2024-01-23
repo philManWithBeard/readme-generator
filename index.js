@@ -151,7 +151,7 @@ const init = async () => {
 
     await writeFileAsync("./generated-readme/README.md", markdown);
 
-    console.log("You're README is in the generated-readme directory");
+    console.log("Your README is in the generated-readme directory");
   } catch (err) {
     console.log(err);
   }
