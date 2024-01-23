@@ -1,7 +1,31 @@
 // function to generate markdown for README
 function generateMarkdown(data) {
-  console.log(data.title);
+  let badge;
+  switch (data.license) {
+    case "MIT":
+      badge =
+        "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      break;
+    case "APACHE 2.0":
+      badge =
+        "[![License](https://img.shields.io/badge/License-Apache_2.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)";
+      break;
+    case "GPL 3.0":
+      badge =
+        "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)";
+      break;
+    case "BSD 3":
+      badge =
+        "[![License](https://img.shields.io/badge/License-BSD_3--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+      break;
+    default:
+      badge = "";
+      break;
+  }
+
   return `# ${data.title}
+
+${badge}
 
 ### Description
 ${data.desc}
@@ -30,19 +54,9 @@ ${data.contributor}
 ${data.test}
 
 ### Questions
-${data.github}
-${data.email}
+- [See my Github](https://www.github.com/${data.github})
+- Email: ${data.email}
 `;
 }
-
-const badges = {
-  MIT: "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)",
-  "APACHE 2.0":
-    "[![License](https://img.shields.io/badge/License-Apache_2.0-yellowgreen.svg)](https://opensource.org/licenses/Apache-2.0)",
-  "GPL 3.0":
-    "[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)",
-  "BSD 3":
-    "[![License](https://img.shields.io/badge/License-BSD_3--Clause-orange.svg)](https://opensource.org/licenses/BSD-3-Clause) ",
-};
 
 module.exports = generateMarkdown;
