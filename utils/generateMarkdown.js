@@ -1,5 +1,6 @@
 // function to generate markdown for README
 function generateMarkdown(data) {
+  // Return the correct badge for the users entry
   let badge;
   switch (data.license) {
     case "MIT":
@@ -23,6 +24,7 @@ function generateMarkdown(data) {
       break;
   }
 
+  // Structure the markdown file and return it
   return `# ${data.title}
 
 ${badge}

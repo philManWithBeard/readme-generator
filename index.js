@@ -1,8 +1,9 @@
 const fs = require("fs");
 const util = require("util");
-const path = require("path");
 const inquirer = require("inquirer");
 const generateMarkdown = require("./utils/generateMarkdown");
+
+// function to write to the file asynchronously
 const writeFileAsync = util.promisify(fs.writeFile);
 
 // array of questions for user
@@ -12,6 +13,7 @@ const questions = () => {
       type: "input",
       name: "title",
       message: "What's the name of your project?",
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -25,6 +27,7 @@ const questions = () => {
       type: "input",
       name: "desc",
       message: "Describe your project",
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -38,6 +41,7 @@ const questions = () => {
       type: "input",
       name: "install",
       message: "How do you install your project?",
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -53,6 +57,7 @@ const questions = () => {
       type: "input",
       name: "usage",
       message: "How do you use the application?",
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -66,6 +71,7 @@ const questions = () => {
       type: "input",
       name: "contributor",
       message: "How do you contribute?",
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -80,6 +86,7 @@ const questions = () => {
       name: "test",
       message: "How do you run tests?",
       default: "npm test",
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -90,11 +97,13 @@ const questions = () => {
       },
     },
     {
+      // prompt the user to select from a list of choices
       type: "list",
       name: "license",
       message: "Please select a license for your project.",
       choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "NONE"],
       default: ["MIT"],
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -108,6 +117,7 @@ const questions = () => {
       type: "input",
       name: "github",
       message: "What's your GitHub username?",
+      // was there a response, if not then return false
       validate: (response) => {
         if (response) {
           return true;
@@ -141,18 +151,25 @@ const questions = () => {
 // function to write README file
 function writeToFile(fileName, data) {}
 
-// function to initialize program
+// asynchronous function to initialise the app
 const init = async () => {
   try {
+    // ask user questions and wait for response
     const answers = await questions();
+
+    // relay answers to user
     console.log(answers);
 
+    // pass answers to a function that will turn them into markdown
     const markdown = generateMarkdown(answers);
 
+    // call the writeFileAsync function and wait for confirmation
     await writeFileAsync("./generated-readme/README.md", markdown);
 
+    // let the user know where their file is
     console.log("Your README is in the generated-readme directory");
   } catch (err) {
+    // log errors to the user
     console.log(err);
   }
 };
