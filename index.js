@@ -90,7 +90,7 @@ const questions = () => {
       },
     },
     {
-      type: "input",
+      type: "list",
       name: "license",
       message: "Please select a license for your project.",
       choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "NONE"],
@@ -121,8 +121,13 @@ const questions = () => {
       type: "input",
       name: "email",
       message: "What's your email address?",
-      validate: (response) => {
-        if (response) {
+      validate: (email) => {
+        // Regex mail check (return true if valid mail)
+        if (
+          /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()\.,;\s@\"]+\.{0,1})+([^<>()\.,;:\s@\"]{2,}|[\d\.]+))$/.test(
+            email
+          )
+        ) {
           return true;
         } else {
           console.log("That didn't work. Enter a valid email address.");
@@ -144,9 +149,9 @@ const init = async () => {
 
     const markdown = generateMarkdown(answers);
 
-    await writeFileAsync("README.md", markdown);
+    await writeFileAsync("./generated-readme/README.md", markdown);
 
-    console.log("Successfully wrote to index.html");
+    console.log("You're README is in the generated-readme directory");
   } catch (err) {
     console.log(err);
   }
