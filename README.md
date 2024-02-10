@@ -2,11 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### Description
+## Description
 
 Asks questions in the command line then generates a readme.md file
 
-### Table of Contents
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -15,27 +15,31 @@ Asks questions in the command line then generates a readme.md file
 - [Tests](#tests)
 - [Questions](#questions)
 
-### Installation
+## Demonstration
+
+[Live Stackblitz Demo](https://stackblitz.com/~/github.com/philManWithBeard/readme-generator)
+
+## Installation
 
 node init & node install
 
-### Usage
+## Usage
 
 node index.js
 
-### License
+## License
 
 MIT
 
-### Contributing
+## Contributing
 
 Reach out using the contact details below or create an issue
 
-### Tests
+## Tests
 
 N/A
 
-### Questions
+## Questions
 
 - [See my Github](https://www.github.com/philmanwithbeard)
 - Email: philburrowsfm@gmail.com
